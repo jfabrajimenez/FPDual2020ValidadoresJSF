@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:validadoresNuestros="http://aytos.ejemplosValidadoresJSF.es/ui"
+      xmlns:p="http://primefaces.org/ui" >
+    <head>
+    	<title>Ejemplo de validadores JSF. Validador personalizado.</title>
+    </head>
+    <body>
+    	<h1>Emplo de validadores JSF. Validador personalizado para el email.</h1>
+    	<hr/>
+    	
+    	<h:form>
+    		<h:messages showDetail="true" />
+    		
+    		<h:panelGrid columns="2">
+    			<h:outputLabel id="lblNombre" for="nombre" value="Nombre:" />
+    			<p:inputText id="nombre" value="#{userImperativo.nombre}" placeholder="Nombre del usuario" />
+    			
+    			<h:outputLabel id="lblEmail" for="email" value="Correo electrónico:" />
+    			<h:inputText id="email" value="#{userImperativo.email}">
+    				<validadoresNuestros:validadorEmailImperativo for="email" nombre="#{userImperativo.nombre}" />
+    			</h:inputText>
+    		</h:panelGrid>
+    		<h:commandButton id="submit" value="Enviar"  />
+    		
+    	</h:form>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+      
+    <head>
+    	<title>Ejemplo de validador de JSF. Propiedades</title>
+    </head>
+    
+    <body>
+    	<h1>Ejemplo de propiedades en los mensajes de los validadores.</h1>
+    	<hr />
+    	
+    	<h:form>
+	    	<h:panelGrid columns="3">
+	    		<h:outputLabel id="lblUsuario" value="Usuario" />
+	    		<h:inputText id="username" value="#{usuario.nombre}" size="20"
+	    				required="true" label="Nombre de usuario">
+	    			<f:validateLength for="username" minimum="3" maximum="10" />
+	    		</h:inputText>
+	    		<h:message for="username" style="color:red" />
+	    		
+	    		<h:outputLabel id="lblFechaNacimiento" value="Fecha de nacimiento" />
+	    		<h:inputText id="fNacimiento" value="#{usuario.fechaNacimiento}"
+	    				size="20" required="true" label="Fecha de nacimiento">
+	    			<f:convertDateTime pattern="dd/MM/yyyy" />
+	    		</h:inputText>
+	    		<h:message for="fNacimiento" style="color:green" />
+	    	</h:panelGrid>
+	    	
+	    	<h:commandButton id="submit" value="Enviar" action="result" />
+    	</h:form>
+    </body>
+</html>

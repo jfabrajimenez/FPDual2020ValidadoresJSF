@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+    <head>
+    	<title>Ejemplo validadores JSF. Estandar.</title>
+    </head>
+    <body>
+    	<h1>Ejemplo de validadores estandar de JSF.</h1>
+    	<hr />
+    	
+    	<h:form>
+    		<h:messages />
+    		<h:panelGrid columns="2">
+    			<h:outputLabel id="lblNombreMovil" for="nMovil" value="Nombre del móvil" />
+    			<h:inputText id="nMovil" required="true" requiredMessage="El nombre del móvil es obligatorio." />
+    			
+    			<h:outputLabel id="lblColorMovil" for="colorMovil" value="Color" />
+    			<h:inputText id="colorMovil" required="true" label="color del móvil">
+    				<f:validateLength for="colorMovil" minimum="1" maximum="10" />
+    			</h:inputText>
+    			
+    			<h:outputLabel id="lblCantidad" for="cantidad" value="Cantidad" />
+    			<h:inputText id="cantidad" label="cantidad">
+    				<f:validateLongRange for="cantidad" minimum="1" maximum="10" />
+    			</h:inputText>
+    		</h:panelGrid>
+    		
+    		<h:commandButton id="submit" value="Comprar" />
+    	</h:form>
+    </body>
+</html>

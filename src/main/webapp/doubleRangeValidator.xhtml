@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      <head>
+      	<title>Ejemplos validadores JSF. DoubleRange</title>
+      </head>
+      <body>
+      	<h1>Ejemplo validadores JSF. DoubleRange</h1>
+      	<hr/>
+      	
+      	<h:form>
+      		<h:messages />
+      		<h:panelGrid columns="2">
+      			<h:outputLabel id="lblNombreMovil" for="nombreMovil" value="Nombre del móvil:"/>
+      			<h:inputText id="nombreMovil" required="true" requiredMessage="En nombre del móvil te lo has olvidado" />
+      			
+      			<h:outputLabel id="lblColorMovil" for="colorMovil" value="Color:" />
+      			<h:inputText id="colorMovil" required="true" label="color del móvil">
+      				<f:validateLength for="colorMovil" minimum="3" maximum="50" />
+      			</h:inputText>
+      			
+      			<h:outputLabel id="lblCantidad" for="cantidad" value="Cantidad disponible:" />
+      			<h:inputText id="cantidad" label="cantidad">
+      				<f:validateLongRange for="cantidad" minimum="1" maximum="10" />
+      			</h:inputText>
+      			
+      			<h:outputLabel id="lblVersion" for="version" value="Versión:" />
+      			<h:inputText id="version" required="true" label="versión" validatorMessage="La versión debe estar entre 1.0 y 100.0">
+      				<f:validateDoubleRange for="version" minimum="1.0" maximum="100.0" />
+      			</h:inputText>
+      		</h:panelGrid>
+      		
+      		<h:commandButton value="Comprar" />
+      	</h:form>
+      </body>
+</html>
