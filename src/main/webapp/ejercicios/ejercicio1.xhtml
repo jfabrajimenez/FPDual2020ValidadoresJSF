@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:v="http://aytos.ejerciciosValidadoresJSF.es/ui">
+	<h:head>
+		<title>Validadores de JSF. Ejercicio 1</title>
+	</h:head>
+	<h:body>
+		<h1>Validadores de JSF. Ejercicio 1. </h1>
+		<h2>Enunciado</h2>
+		<p>Realizar un solo validador de pantalla que valide la siguiente pantalla.</p>
+		<p>Se necesita una pantalla que valide el alta de un nuevo modelo de móvil.</p>
+		<ul>
+			<li>Campo: Marca ->Longitud mínima de 2, no numério. Obligatorio</li>
+			<li>Campo: Color -> Permitidos{"rojo","plata","blanco","azul"}, no numérico. Obligatorio</li>
+			<li>Campo: SO -> Permitidos{"Android","IOS"}. Obligatorio. Si es IOS la marca debe ser iphone.</li>
+			<li>Campo: Versión -> No puede contener letras a excepción del punto que separa la versiones. Obligatorio.</li>
+			<li>Campo: RAM -> Superior a 2 e inferior a 12. Obligatorio. Si es iphone no puede tener más de 4 GB de ram.</li>
+			<li>Campo: Precio -> Superior a 0, debe llevar decimales. Obligatorio.</li>
+			<li>Campo: Fecha de venta -> Fecha superior a 2010 e inferior al año actual. Obligatorio.</li>
+			<li>Campo: Descripción -> Debe ser superior a 0 e inferior a 255.</li>
+		</ul>
+
+		<hr />
+		<h:form id="formularioMovil">
+			<p:messages id="mensajes" />
+			
+			<h:panelGrid id="panelCampos" columns="2">
+				<p:outputLabel id="lblMarca" for="marca" value="Marca:"/>
+      			<p:inputText id="marca" value="#{ejercicio1.movil.marca}" required="true" label="marca">
+      				<f:validateLength for="marca" minimum="2" />
+      				<p:ajax process="@this formularioMovil:marca" event="change" update="@form" />
+      			</p:inputText>
+      			
+      			
+      			<p:outputLabel id="lblColor" for="color" value="Color:"/>
+      			<p:inputText id="color" value="#{ejercicio1.movil.color}" required="true" label="color">
+      				<v:validadorColoresPermitidos for="color" />
+      			</p:inputText>
+      			
+      			<p:outputLabel id="lblSo" for="so" value="Sistema operativo:"/>
+      			<p:inputText id="so" value="#{ejercicio1.movil.so}" required="true" label="sistema operativo">
+      				<v:validadorSistemaOperativo for="so" />
+      			</p:inputText>
+      			
+      			<p:outputLabel id="lblVersion" for="version" value="Version:"/>
+      			<p:inputNumber id="version" value="#{ejercicio1.movil.version}" required="true" label="version" />
+      			
+      			<p:outputLabel id="lblRam" for="ram" value="RAM:" />
+      			<p:inputNumber id="ram" value="#{ejercicio1.movil.ram}" decimalPlaces="0" label="ram" minValue="2" maxValue="12">
+      				<v:validadorRam for="ram" marca="#{ejercicio1.movil.marca}" />
+      			</p:inputNumber>
+      			
+      			<p:outputLabel id="lblPrecio" for="precio" value="Precio:" />
+      			<p:inputNumber id="precio" value="#{ejercicio1.movil.precio}" decimalPlaces="2" minValue="0" required="true" />
+      			
+      			<p:outputLabel id="lblFecha" for="fecha" value="Fecha:" />
+      			<p:calendar id="fecha"  value="#{ejercicio1.movil.fechaVenta}" required="true" mode="popup" pattern="dd/MM/yyyy" mindate="01/01/2011" maxdate="#{ejercicio1.fechaMaxima}" navigator="true"/>
+      			
+      			<p:outputLabel id="lblDescripcion" for="descripcion" value="Descripcion:" />
+      			<p:panel id="panCampoDescripcion">
+	      			<p:inputTextarea id="descripcion"  value="#{ejercicio1.movil.descripcion}" rows="5" cols="30" counter="display" maxlength="255"
+	                         counterTemplate="{0} caracteres disponibles." autoResize="false"/>
+	                <br />
+                	<h:outputText id="display" class="p-d-block" />
+                </p:panel>
+			</h:panelGrid>
+			
+			<p:commandButton id="btnEnviar" type="submit" value="Enviar" process="@form" actionListener="#{ejercicio1.guardar}" update="@form" />
+		</h:form>
+	
+	</h:body>
+</html>

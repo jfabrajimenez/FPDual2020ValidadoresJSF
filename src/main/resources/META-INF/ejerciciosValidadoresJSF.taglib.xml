@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+        version="2.0">
+    <namespace>http://aytos.ejerciciosValidadoresJSF.es/ui</namespace>
+    
+    <tag>
+    	<tag-name>validadorColoresPermitidos</tag-name>
+    	<validator>
+    		<validator-id>ejercicio1.validadorColoresPermitidos</validator-id>
+    	</validator>
+    </tag>
+    
+    <tag>
+    	<tag-name>validadorSistemaOperativo</tag-name>
+    	<validator>
+    		<validator-id>ejercicio1.validadorSistemasOperativosPermitidos</validator-id>
+    	</validator>
+    </tag>
+    
+    <tag>
+    	<tag-name>validadorRam</tag-name>
+    	<validator>
+    		<validator-id>ejercicio1.validadorRam</validator-id>
+    	</validator>
+    </tag>
+</facelet-taglib>
