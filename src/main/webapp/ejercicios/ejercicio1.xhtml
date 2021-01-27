@@ -43,14 +43,14 @@
       			
       			<p:outputLabel id="lblSo" for="so" value="Sistema operativo:"/>
       			<p:inputText id="so" value="#{ejercicio1.movil.so}" required="true" label="sistema operativo">
-      				<v:validadorSistemaOperativo for="so" />
+      				<v:validadorSistemaOperativo for="so" marca="#{ejercicio1.movil.marca}" />
       			</p:inputText>
       			
       			<p:outputLabel id="lblVersion" for="version" value="Version:"/>
       			<p:inputNumber id="version" value="#{ejercicio1.movil.version}" required="true" label="version" />
       			
       			<p:outputLabel id="lblRam" for="ram" value="RAM:" />
-      			<p:inputNumber id="ram" value="#{ejercicio1.movil.ram}" decimalPlaces="0" label="ram" minValue="2" maxValue="12">
+      			<p:inputNumber id="ram" value="#{ejercicio1.movil.ram}" required="true" decimalPlaces="0" label="ram" minValue="2" maxValue="12">
       				<v:validadorRam for="ram" marca="#{ejercicio1.movil.marca}" />
       			</p:inputNumber>
       			
@@ -61,9 +61,9 @@
       			<p:calendar id="fecha"  value="#{ejercicio1.movil.fechaVenta}" required="true" mode="popup" pattern="dd/MM/yyyy" mindate="01/01/2011" maxdate="#{ejercicio1.fechaMaxima}" navigator="true"/>
       			
       			<p:outputLabel id="lblDescripcion" for="descripcion" value="Descripcion:" />
-      			<p:panel id="panCampoDescripcion">
+      			<p:panel id="panCampoDescripcion" style="border: none">
 	      			<p:inputTextarea id="descripcion"  value="#{ejercicio1.movil.descripcion}" rows="5" cols="30" counter="display" maxlength="255"
-	                         counterTemplate="{0} caracteres disponibles." autoResize="false"/>
+	                         counterTemplate="{0} caracteres disponibles." autoResize="false" required="true" style="margin-left: -16px; margin-top: -7px"/>
 	                <br />
                 	<h:outputText id="display" class="p-d-block" />
                 </p:panel>

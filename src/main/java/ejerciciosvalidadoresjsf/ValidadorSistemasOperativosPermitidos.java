@@ -33,11 +33,19 @@ public class ValidadorSistemasOperativosPermitidos extends ValidadorTextosPermit
 		List<FacesMessage> lErrores=new ArrayList<>();
 		
 		lErrores.addAll(this.validar(value));
-		lErrores.addAll(this.validarCompatibilidadConMarca(value));
 		
 		if(!lErrores.isEmpty()) {
 			throw new ValidatorException(lErrores);
 		}
+	}
+	
+	protected List<FacesMessage>validar(Object value){
+		List<FacesMessage> lErrores=new ArrayList<>();
+		
+		lErrores.addAll(super.validar(value));
+		lErrores.addAll(this.validarCompatibilidadConMarca(value));
+		
+		return lErrores;
 	}
 	
 	private List<FacesMessage>validarCompatibilidadConMarca(Object value){
